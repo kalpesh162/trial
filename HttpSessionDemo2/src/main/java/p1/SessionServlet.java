@@ -30,17 +30,24 @@ public class SessionServlet extends HttpServlet {
 
 		// How To Create Session
 
+		Integer cnt = 0;
 		HttpSession session = request.getSession(false);
 
 		if (session != null) {
+
+			cnt = (Integer) session.getAttribute("count") + 1;
+			session.setAttribute("count", cnt);
 
 		} else {
 
 			// session.isNew();
 			session = request.getSession();
 
+			session.setAttribute("count", cnt + 1);
+
 		}
 
+		out.print("<h1>  VISIT COUNT               " + session.getAttribute("count") + "  </h1> <hr>");
 		out.print("<h1>  Session Id               " + session.getId() + "  </h1> <hr>");
 		out.print("<h1>  Session Creation Time   " + session.getCreationTime() + "  </h1> <hr>");
 
