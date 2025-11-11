@@ -2,32 +2,38 @@ package p1;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/SecondServlet")
-public class SecondServlet extends HttpServlet {
+@WebServlet("/FirstServlet")
+public class FirstServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public SecondServlet() {
+	public FirstServlet() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 
-		Cookie[] cookies = request.getCookies();
+		String name = request.getParameter("uname");
+		out.print("<h1>" + name + "</h1>");
 
-		for (Cookie cookie : cookies) {
-			out.print("<h2>" + cookie.getName() + "</h2> <br>");
-			out.print("<h2>" + cookie.getValue() + "</h2> <br>");
-		}
+		out.print("<form action='SecondServlet' method='get'>");
+		out.print("<input type='hidden' name='uname' value='" + name + "'>");
+		out.print("<input type='submit' value='OK'>");
+
+		out.print("</form>");
+
+		out.print("<hr>");
+
+		out.print("<a href='SecondServlet?uname=" + name + "'> CLICK " + "</a>");
 
 	}
 

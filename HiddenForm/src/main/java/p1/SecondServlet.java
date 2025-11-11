@@ -1,13 +1,13 @@
 package p1;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
 
 @WebServlet("/SecondServlet")
 public class SecondServlet extends HttpServlet {
@@ -15,19 +15,17 @@ public class SecondServlet extends HttpServlet {
 
 	public SecondServlet() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 
-		Cookie[] cookies = request.getCookies();
-
-		for (Cookie cookie : cookies) {
-			out.print("<h2>" + cookie.getName() + "</h2> <br>");
-			out.print("<h2>" + cookie.getValue() + "</h2> <br>");
-		}
+		String name = request.getParameter("uname");
+		out.print("<h1>" + name + "</h1>");
 
 	}
 

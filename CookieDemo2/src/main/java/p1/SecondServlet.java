@@ -29,6 +29,11 @@ public class SecondServlet extends HttpServlet {
 			out.print("<h2>" + cookie.getValue() + "</h2> <br>");
 		}
 
+		
+		out.print("<h1>");
+		out.print("<a href='ThirdServlet'>"+"VISIT"+"</a>");
+		out.print("</h1>");
+
 	}
 
 }
