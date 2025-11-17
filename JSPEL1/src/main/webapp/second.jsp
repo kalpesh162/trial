@@ -22,8 +22,7 @@
 		<h1>${requestScope.stud }</h1>
 		<hr>
 		<h1>
-			${requestScope.stud.id } <br>
-			 ${requestScope.stud.name } <br>
+			${requestScope.stud.id } <br> ${requestScope.stud.name } <br>
 			${requestScope.stud.marks } <br>
 		</h1>
 
